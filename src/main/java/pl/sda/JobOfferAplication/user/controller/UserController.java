@@ -3,7 +3,6 @@ package pl.sda.JobOfferAplication.user.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.sda.JobOfferAplication.user.entity.UserEntity;
 import pl.sda.JobOfferAplication.user.exception.UserException;
 import pl.sda.JobOfferAplication.user.model.UserInput;
 import pl.sda.JobOfferAplication.user.model.UserOutput;
@@ -49,16 +48,6 @@ public class UserController {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .build();
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable(value = "id") Long id) throws UserException {
-
-        userService.deleteUser(id);
-
-        return ResponseEntity
-                .status(HttpStatus.NO_CONTENT)
                 .build();
     }
 
