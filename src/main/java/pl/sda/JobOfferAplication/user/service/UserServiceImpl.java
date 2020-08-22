@@ -47,6 +47,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public void deleteUser(Long id) throws UserException {
+        UserEntity userEntity = getUserEntity(id);
+        userRepository.delete(userEntity);
+    }
+
+    @Override
     public List<UserOutput> getAllUsers() {
         return userRepository.findAll()
                 .stream()
@@ -55,13 +61,19 @@ public class UserServiceImpl implements UserService{
 
     }
 
+
     @Override
     public UserOutput getUserById(Long id) throws UserException {
+        return getUserEntity(id).toOutput();
+    }
+
+
+    private UserEntity getUserEntity(Long id) throws UserException {
         final Optional<UserEntity> optionalUserEntity = userRepository.findById(id);
         if(!optionalUserEntity.isPresent()) {
             throw new UserException(NO_USER_FOUND_OR_GIVEN_ID);
         }
-        return optionalUserEntity.get().toOutput();
+        return optionalUserEntity.get();
     }
 
     private void validateUserInput(UserInput userInput) throws UserException{
