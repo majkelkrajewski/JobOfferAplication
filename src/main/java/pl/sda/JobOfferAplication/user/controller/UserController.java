@@ -12,10 +12,11 @@ import pl.sda.JobOfferAplication.user.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping(UserController.USERS_MAPPING)
 public class UserController {
 
 
+    public static final String USERS_MAPPING = "/users";
     final private UserService userService;
 
     public UserController(UserService userService) {
