@@ -4,7 +4,7 @@ package pl.sda.JobOfferAplication.user.entity;
 import lombok.Getter;
 //import lombok.NoArgsConstructor;
 import pl.sda.JobOfferAplication.user.model.UserOutput;
-
+import javax.persistence.Table;
 import javax.persistence.*;
 import java.time.LocalDate;
 
