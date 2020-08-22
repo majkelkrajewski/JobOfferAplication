@@ -63,5 +63,6 @@ public class UserDeleteTest {
 
         UserException userException =assertThrows(UserException.class, executable);
         assertEquals(NO_USER_FOUND_OR_GIVEN_ID, userException.getMessage());
+
     }
 }
