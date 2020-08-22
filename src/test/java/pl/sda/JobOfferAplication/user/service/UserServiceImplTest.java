@@ -42,7 +42,6 @@ class UserServiceImplTest {
         assertEquals(all.size(), 1);
         final UserOutput userOutput = all.get(0).toOutput();
 
-        userInput.equals(userOutput);
         assertEquals(userOutput.getLogin(), userInput.getLogin());
 
     }
