@@ -10,6 +10,7 @@ import pl.sda.JobOfferAplication.user.model.UserInput;
 import pl.sda.JobOfferAplication.user.model.UserOutput;
 import pl.sda.JobOfferAplication.user.repository.UserRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -44,5 +45,19 @@ class UserServiceImplTest {
 
         assertEquals(userOutput.getLogin(), userInput.getLogin());
 
+    }
+
+    @Test
+    public void getUserByIdIsCorrect ( ) throws UserException{
+        //given
+        UserEntity userEntity = new UserEntity ( "Piotr" , "GAGA" , LocalDate.now ( ) , "2gggFFFrerer2" );
+        userRepository.save ( userEntity );
+        //when
+        UserOutput userById = userService.getUserById (1L);
+        //then
+        assertTrue (!(userById == null));
+        UserOutput userOutput = userEntity.toOutput ();
+        assertEquals ( userOutput.getName () , userById.getName () );
+        assertEquals ( userOutput.getLogin () , userById.getLogin () );
     }
 }
