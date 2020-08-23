@@ -56,8 +56,10 @@ class UserServiceImplTest {
         //given
         UserEntity userEntity = new UserEntity ( "Piotr" , "GAGA" , LocalDate.now ( ) , "2gggFFFrerer2" );
         userRepository.save ( userEntity );
+        Long id = userRepository.findAll().get(0).getId();
+
         //when
-        UserOutput userById = userService.getUserById (1L);
+        UserOutput userById = userService.getUserById (id);
         //then
         assertTrue (!(userById == null));
         UserOutput userOutput = userEntity.toOutput ();
