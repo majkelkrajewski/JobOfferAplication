@@ -4,6 +4,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import pl.sda.JobOfferAplication.user.entity.UserEntity;
 import pl.sda.JobOfferAplication.user.exception.UserException;
 import pl.sda.JobOfferAplication.user.model.UserInput;
@@ -59,5 +63,10 @@ class UserServiceImplTest {
         UserOutput userOutput = userEntity.toOutput ();
         assertEquals ( userOutput.getName () , userById.getName () );
         assertEquals ( userOutput.getLogin () , userById.getLogin () );
+    }
+
+    @Test
+    public void test() throws Exception {
+
     }
 }
