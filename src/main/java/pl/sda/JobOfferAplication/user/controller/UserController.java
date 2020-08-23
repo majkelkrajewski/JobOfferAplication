@@ -17,6 +17,8 @@ public class UserController {
 
 
     public static final String USERS_MAPPING = "/users";
+    public static final String ID = "/{id}";
+
     final private UserService userService;
 
     public UserController(UserService userService) {
@@ -33,7 +35,7 @@ public class UserController {
                 .body(allUsers);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(ID)
     public ResponseEntity<UserOutput> getUserById(@PathVariable(value = "id") Long id) throws UserException {
 
 

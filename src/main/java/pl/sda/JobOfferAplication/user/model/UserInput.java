@@ -1,5 +1,6 @@
 package pl.sda.JobOfferAplication.user.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -12,13 +13,10 @@ public class UserInput {
 
     private String name;
     private String login;
+    @JsonIgnore
     private LocalDate creationDate;
     private String password;
 
-    public UserInput(){
-        creationDate = LocalDate.now();
-
-    }
 
     public UserInput(String name, String login, String password) {
         this.name = name;
