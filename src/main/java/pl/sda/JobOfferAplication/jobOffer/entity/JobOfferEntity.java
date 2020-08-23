@@ -22,13 +22,13 @@ public class JobOfferEntity {
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private UserEntity User;
+    private UserEntity user;
 
 
     public JobOfferEntity(Category category, LocalDate endDate, UserEntity user) {
         this.category = category;
         this.startDate = LocalDate.now();
         this.endDate = LocalDate.now().plusWeeks(2);
-        User = user;
+        this.user = user;
     }
 }

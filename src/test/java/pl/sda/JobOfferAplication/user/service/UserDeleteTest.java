@@ -38,10 +38,11 @@ public class UserDeleteTest {
         //given
         UserInput userInput = new UserInput("Michael", "mike", "blabla");
         userService.createUser(userInput);
+        Long id = userService.getAllUsers().get(0).getUuid();
 
 
         //when
-        userService.deleteUser(1L);
+        userService.deleteUser(id);
 
         //then
         final List<UserEntity> all = userRepository.findAll();
@@ -49,20 +50,18 @@ public class UserDeleteTest {
 
     }
     @Test
-    public void isDeletingMethodWithExeptionIsCorrect() throws UserException {
+    public void isDeletingMethodWithExceptionIsCorrect() throws UserException {
 
         //given
         UserInput userInput = new UserInput("Michael", "mike", "blabla");
         userService.createUser(userInput);
-
+        Long id = userService.getAllUsers().get(0).getUuid();
 
         //when
-        Executable executable = () ->  userService.deleteUser(15L);
+        Executable executable = () ->  userService.deleteUser(id+1);
 
         //then
-
         UserException userException =assertThrows(UserException.class, executable);
         assertEquals(NO_USER_FOUND_OR_GIVEN_ID, userException.getMessage());
-
     }
 }

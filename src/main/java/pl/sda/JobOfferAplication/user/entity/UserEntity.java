@@ -3,12 +3,12 @@ package pl.sda.JobOfferAplication.user.entity;
 //import lombok.AccessLevel;
 import lombok.Getter;
 //import lombok.NoArgsConstructor;
-import org.hibernate.mapping.Set;
 import pl.sda.JobOfferAplication.jobOffer.entity.JobOfferEntity;
 import pl.sda.JobOfferAplication.user.model.UserOutput;
 import javax.persistence.Table;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "USERS")
@@ -27,8 +27,8 @@ public class UserEntity {
     private LocalDate creationDate;
     private String password;
 
-    @OneToMany(mappedBy = "USERS", cascade = CascadeType.ALL)
-    private Set jobOffers;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<JobOfferEntity> jobOffers;
 
 
     public UserEntity(String name, String login, LocalDate creationDate, String password) {
