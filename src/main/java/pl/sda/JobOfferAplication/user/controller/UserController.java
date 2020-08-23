@@ -54,5 +54,13 @@ public class UserController {
                 .build();
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable(value = "id") Long id) throws UserException {
 
+        userService.deleteUser(id);
+
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .build();
+    }
 }
